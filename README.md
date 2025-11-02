@@ -329,32 +329,6 @@ This project was developed as a team assignment. Each team member contributed to
 - API documentation
 - Testing and validation procedures
 
-## Project Evaluation
-
-### Rubric Compliance
-
-#### 1. Schema Completeness & Normalization (5/5)
-- 3NF normalized schema with 3+ tables  
-- Primary and foreign keys properly defined  
-- Stored procedure and trigger implementation  
-- MongoDB collections with relationship modeling
-
-#### 2. Endpoint Functionality (5/5)
-- Complete CRUD operations (CREATE, READ, UPDATE, DELETE)  
-- Input validation and error handling  
-- Database integration and transaction management  
-- Deployed and functional API
-
-#### 3. Data Accuracy & Model Implementation (5/5)
-- Fetches latest entry from database  
-- Handles missing data and preprocessing  
-- Makes ML predictions with confidence scores  
-- Logs results back to database
-
-#### 4. Clear and Substantive Contribution
-- Multiple meaningful commits per team member  
-- Clear commit messages and code organization  
-- Documented individual contributions
 
 ## Troubleshooting
 
