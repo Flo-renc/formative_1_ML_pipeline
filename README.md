@@ -421,4 +421,4 @@ This project is developed for educational purposes as part of a database and mac
 
 **Last Updated**: November 2024  
 **Version**: 1.0.0  
-**Team**: [Alie, Florence, Fadluzizah, Queen]
+**Team**: [Alice, Florence, Fadhlullah, Queen]
