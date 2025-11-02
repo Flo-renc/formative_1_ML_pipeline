@@ -1,0 +1,90 @@
+// Heart Disease Database ERD in PlantUML format
+// This can be rendered using PlantUML tools or online generators
+
+@startuml Heart_Disease_Database_ERD
+
+!theme plain
+skinparam linetype ortho
+skinparam backgroundColor white
+
+entity "PATIENTS" as patients {
+    * **patient_id** : INT <<PK>>
+    --
+    * age : INT
+    * sex : INT
+    * restbps : INT
+    * chol : INT
+    * fbs : INT
+    created_at : TIMESTAMP
+    updated_at : TIMESTAMP
+}
+
+entity "CLINICALSYMPTOMS" as symptoms {
+    * **symptom_id** : INT <<PK>>
+    --
+    * **patient_id** : INT <<FK>>
+    * cp : INT
+    * exang : INT
+    * oldpeak : DECIMAL(3,1)
+    * slope : INT
+    created_at : TIMESTAMP
+}
+
+entity "CARDIACTESTS" as tests {
+    * **test_id** : INT <<PK>>
+    --
+    * **patient_id** : INT <<FK>>
+    * restecg : INT
+    * thalach : INT
+    * ca : INT
+    * thal : INT
+    * target : INT
+    test_date : TIMESTAMP
+}
+
+entity "PREDICTIONS" as predictions {
+    * **prediction_id** : INT <<PK>>
+    --
+    * **patient_id** : INT <<FK>>
+    * prediction_result : INT
+    * probability_no_disease : DECIMAL(5,4)
+    * probability_disease : DECIMAL(5,4)
+    * confidence_score : DECIMAL(5,4)
+    predicted_at : TIMESTAMP
+    model_version : VARCHAR(50)
+}
+
+entity "PATIENT_AUDIT_LOG" as audit {
+    * **log_id** : INT <<PK>>
+    --
+    patient_id : INT
+    action : VARCHAR(50)
+    table_name : VARCHAR(50)
+    old_values : JSON
+    new_values : JSON
+    changed_at : TIMESTAMP
+    changed_by : VARCHAR(100)
+}
+
+' Relationships
+patients ||--|| symptoms : "has clinical symptoms"
+patients ||--|| tests : "undergoes cardiac tests"
+patients ||--o{ predictions : "receives ML predictions"
+patients ||--o{ audit : "logged in audit trail"
+
+' Relationship Labels
+patients }|..|{ symptoms : patient_id
+patients }|..|{ tests : patient_id
+patients }|..o{ predictions : patient_id
+
+note top of patients : **Primary Entity**\nStores patient demographics\nand basic medical information
+
+note right of symptoms : **Clinical Data**\nChest pain, exercise angina,\nST depression, slope
+
+note right of tests : **Diagnostic Results**\nECG, heart rate, vessels,\nthalassemia, target diagnosis
+
+note bottom of predictions : **ML Results**\nStores prediction outcomes\nwith confidence scores
+
+note bottom of audit : **Audit Trail**\nTracks all database changes\nfor compliance and debugging
+
+@enduml
