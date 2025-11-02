@@ -16,7 +16,7 @@ def get_mysql_connection():
         )
         return connection
     except Exception as e:
-        print('Failed to connect to MySQL: {e}')
+        print(f'Failed to connect to MySQL: {e}')
         return None
     
 if __name__ == "__main__":
