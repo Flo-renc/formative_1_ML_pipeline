@@ -209,22 +209,7 @@ bash Bash.sh
 
 # Run prediction on fetched data
 python ml_prediction_script.py
-```
 
-### Prediction Output
-```json
-{
-  "patient_id": 5,
-  "timestamp": "2024-11-02T15:30:45",
-  "prediction_results": {
-    "prediction": 1,
-    "probability_no_disease": 0.25,
-    "probability_disease": 0.75,
-    "confidence": 0.75,
-    "features": [57, 0, 0, 120, 354, 0, 1, 163, 1, 0.6, 2, 0, 2]
-  }
-}
-```
 
 ## Database Features
 
