@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from mysql_db.models import CompletePatientRecord, PatientResponse, CompletePatientResponse, PatientBase
-from mysql_db.database import get_mysql_connection
+from models import CompletePatientRecord, PatientResponse, CompletePatientResponse, PatientBase
+from database import get_mysql_connection
 
 router = APIRouter(prefix="/mysql", tags=["MySQL Operations"])
 
