@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from bson import ObjectId
 
 # MongoDB Connectio
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb+srv://team_user:user12345@cluster0.akwkdkn.mongodb.net/heart_disease_db?retryWrites=true&w=majority&appName=heart_disease_db")
 db = client["heart_disease_db"]
 
 # Collections ---

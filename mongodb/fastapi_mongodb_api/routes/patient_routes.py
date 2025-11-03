@@ -3,6 +3,7 @@ from models.patient_model import Patient
 from config.db import get_db
 from bson import ObjectId
 from datetime import datetime
+from typing import List
 
 router = APIRouter()
 
@@ -23,6 +24,15 @@ def get_patient(id: str):
         raise HTTPException(status_code=404, detail="Patient not found")
     patient["_id"] = str(patient["_id"])
     return patient
+
+@router.get("/patients/", response_model=List[Patient])
+def get_all_patients():
+    db = get_db()
+    patients = list(db.patients.find())
+    for p in patients:
+        p["id"] = str(p["_id"])
+        p.pop("_id", None)
+    return patients
 
 @router.put("/patients/{id}")
 def update_patient(id: str, data: dict):
